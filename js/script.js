@@ -1,6 +1,8 @@
 var canvas = document.getElementById('particlesCanvas');
 var ctx = canvas.getContext('2d');
 
+var stats;
+
 
 
 const setCanvasSize = () => {
@@ -17,7 +19,7 @@ window.addEventListener('resize', () => {
 
 class Particle {
     static particles = [];
-    static quantity = 50;
+    static quantity = 250;
 
     constructor() {
         this.radius = 3;
@@ -38,11 +40,17 @@ class Particle {
 
     move() {
         this.pos = this.pos.add(this.vel);
-        if (this.pos.x + this.radius >= innerWidth || this.pos.x - this.radius <= 0) {
-            this.vel.x *= -1;
+        if (this.pos.x - this.radius - 1 >= innerWidth) {
+            this.pos.x = 0 - this.radius;
         }
-        if (this.pos.y + this.radius >= innerHeight || this.pos.y - this.radius <= 0) {
-            this.vel.y *= -1;
+        else if (this.pos.x + this.radius + 1 <= 0) {
+            this.pos.x = innerWidth + this.radius;
+        }
+        if (this.pos.y - this.radius - 1 >= innerHeight) {
+            this.pos.y = 0 - this.radius;
+        }
+        else if (this.pos.y + this.radius + 1 <= 0) {
+            this.pos.y = innerHeight + this.radius;
         }
     }
 
@@ -63,11 +71,13 @@ class Particle {
     connections() {
         for (let i = 0; i < Particle.particles.length; ++i) {
             if (Particle.particles[i] !== this) {
-                ctx.beginPath();
-                ctx.moveTo(this.pos.x, this.pos.y);
-                ctx.lineTo(Particle.particles[i].pos.x, Particle.particles[i].pos.y);
-                ctx.strokeStyle = `rgba(255, 255, 255, ${(this.pos.dist(Particle.particles[i].pos) <= 50) ? 1 : -0.01*this.pos.dist(Particle.particles[i].pos)+1.5})`;
-                ctx.stroke();
+                if (-0.01*this.pos.dist(Particle.particles[i].pos)+1.5 > 0) {
+                    ctx.beginPath();
+                    ctx.moveTo(this.pos.x, this.pos.y);
+                    ctx.lineTo(Particle.particles[i].pos.x, Particle.particles[i].pos.y);
+                    ctx.strokeStyle = `rgba(255, 255, 255, ${(this.pos.dist(Particle.particles[i].pos) <= 50) ? 1 : -0.01*this.pos.dist(Particle.particles[i].pos)+1.5})`;
+                    ctx.stroke();
+                }
             }
         }
     }
@@ -80,11 +90,14 @@ const start = () => {
     for (let i = 0; i < Particle.quantity; ++i) {
         new Particle();
     }
+    stats = createStats();
+    document.body.appendChild( stats.domElement );
     const animate = () => {
         ctx.clearRect(0, 0, innerWidth, innerHeight);
         for (let i = 0; i < Particle.particles.length; ++i) {
             Particle.particles[i].print();
         }
+        stats.update();
         requestAnimationFrame(animate);
     }
     animate();
@@ -94,8 +107,13 @@ start();
 
 
 
-var stats = new Stats;
-stats.setMode(0);
-stats.domElement.style.position = 'absolute';
-stats.domElement.style.left = '0px';
-stats.domElement.style.top = '0px';
+function createStats() {
+    var stats = new Stats();
+    stats.setMode(0);
+
+    stats.domElement.style.position = 'absolute';
+    stats.domElement.style.left = '0';
+    stats.domElement.style.top = '0';
+
+    return stats;
+}
