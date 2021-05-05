@@ -13,4 +13,4 @@ var minVelocity = 0.1;
 var maxVelocity = 1.5;
 
 var particleRadius = 3;
-var lineWidth = 1.5;
+var lineWidth = 2;
