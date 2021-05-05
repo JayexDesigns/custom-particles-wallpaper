@@ -5,6 +5,17 @@ var stats;
 
 
 
+const changeCanvasColor = () => {
+    if (transparentBackground) {
+        canvas.style.backgroundColor = "rgba(0,0,0,0)";
+    }
+    else {
+        canvas.style.backgroundImage = `radial-gradient(circle, ${backgroundColor1} 0%, ${backgroundColor2} 100%)`;
+    }
+}
+
+
+
 const setCanvasSize = () => {
     canvas.width = innerWidth;
     canvas.height = innerHeight;
@@ -12,17 +23,16 @@ const setCanvasSize = () => {
 setCanvasSize();
 window.addEventListener('resize', () => {
     setCanvasSize();
-    start();
 });
 
 
 
 class Particle {
     static particles = [];
-    static quantity = 250;
+    static quantity = particleQuantity;
 
     constructor() {
-        this.radius = 3;
+        this.radius = particleRadius;
         this.pos = new Vector2D(
             Math.floor(Math.random() * ((innerWidth - this.radius) - (this.radius)) + this.radius),
             Math.floor(Math.random() * ((innerHeight - this.radius) - (this.radius)) + this.radius)
@@ -33,23 +43,23 @@ class Particle {
         );
         this.vel.x = (Math.floor(Math.random() * 2) === 0) ? this.vel.x * -1 : this.vel.x;
         this.vel.y = (Math.floor(Math.random() * 2) === 0) ? this.vel.y * -1 : this.vel.y;
-        this.vel = this.vel.norm().mul(Math.random() * (1.5 - 0.1) + 0.1);
+        this.vel = this.vel.norm().mul(Math.random() * (maxVelocity - minVelocity) + minVelocity);
 
         Particle.particles.push(this);
     }
 
     move() {
         this.pos = this.pos.add(this.vel);
-        if (this.pos.x - this.radius - 1 >= innerWidth) {
+        if (this.pos.x - this.radius >= innerWidth && this.vel.x > 0) {
             this.pos.x = 0 - this.radius;
         }
-        else if (this.pos.x + this.radius + 1 <= 0) {
+        else if (this.pos.x + this.radius <= 0 && this.vel.x < 0) {
             this.pos.x = innerWidth + this.radius;
         }
-        if (this.pos.y - this.radius - 1 >= innerHeight) {
+        if (this.pos.y - this.radius >= innerHeight && this.vel.y > 0) {
             this.pos.y = 0 - this.radius;
         }
-        else if (this.pos.y + this.radius + 1 <= 0) {
+        else if (this.pos.y + this.radius <= 0 && this.vel.y < 0) {
             this.pos.y = innerHeight + this.radius;
         }
     }
@@ -63,7 +73,7 @@ class Particle {
             this.radius,
             0, Math.PI * 2, true
         );
-        ctx.fillStyle = "#ffffff";
+        ctx.fillStyle = particleColor;
         ctx.fill();
         this.move();
     }
@@ -75,7 +85,8 @@ class Particle {
                     ctx.beginPath();
                     ctx.moveTo(this.pos.x, this.pos.y);
                     ctx.lineTo(Particle.particles[i].pos.x, Particle.particles[i].pos.y);
-                    ctx.strokeStyle = `rgba(255, 255, 255, ${(this.pos.dist(Particle.particles[i].pos) <= 50) ? 1 : -0.01*this.pos.dist(Particle.particles[i].pos)+1.5})`;
+                    ctx.lineWidth = lineWidth;
+                    ctx.strokeStyle = `rgba(${parseInt(linesColor.slice(1, 3), 16)}, ${parseInt(linesColor.slice(3, 5), 16)}, ${parseInt(linesColor.slice(5, 7), 16)}, ${(this.pos.dist(Particle.particles[i].pos) <= 50) ? 1 : -0.01*this.pos.dist(Particle.particles[i].pos)+1.5})`;
                     ctx.stroke();
                 }
             }
@@ -90,14 +101,18 @@ const start = () => {
     for (let i = 0; i < Particle.quantity; ++i) {
         new Particle();
     }
-    stats = createStats();
-    document.body.appendChild( stats.domElement );
+    if (showFPS) {
+        stats = createStats();
+        document.body.appendChild(stats.domElement);
+    }
     const animate = () => {
         ctx.clearRect(0, 0, innerWidth, innerHeight);
         for (let i = 0; i < Particle.particles.length; ++i) {
             Particle.particles[i].print();
         }
-        stats.update();
+        if (showFPS) {
+            stats.update();
+        }
         requestAnimationFrame(animate);
     }
     animate();
