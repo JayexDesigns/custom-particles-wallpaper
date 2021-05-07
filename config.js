@@ -14,3 +14,5 @@ var lineWidth = 2;
 
 var minVelocity = 0.5;
 var maxVelocity = 2;
+
+var disapearOffset = 30;
