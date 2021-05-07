@@ -49,17 +49,17 @@ class Particle {
 
     move() {
         this.pos = this.pos.add(this.vel);
-        if (this.pos.x - this.radius * disapearOffset >= innerWidth && this.vel.x > 0) {
-            this.pos.x = 0 - this.radius * disapearOffset;
+        if (this.pos.x - this.radius + disapearOffset >= innerWidth && this.vel.x > 0) {
+            this.pos.x = 0 - this.radius + disapearOffset;
         }
-        else if (this.pos.x + this.radius * disapearOffset <= 0 && this.vel.x < 0) {
-            this.pos.x = innerWidth + this.radius * disapearOffset;
+        else if (this.pos.x + this.radius + disapearOffset <= 0 && this.vel.x < 0) {
+            this.pos.x = innerWidth + this.radius + disapearOffset;
         }
-        if (this.pos.y - this.radius * disapearOffset >= innerHeight && this.vel.y > 0) {
-            this.pos.y = 0 - this.radius * disapearOffset;
+        if (this.pos.y - this.radius + disapearOffset >= innerHeight && this.vel.y > 0) {
+            this.pos.y = 0 - this.radius + disapearOffset;
         }
-        else if (this.pos.y + this.radius * disapearOffset <= 0 && this.vel.y < 0) {
-            this.pos.y = innerHeight + this.radius * disapearOffset;
+        else if (this.pos.y + this.radius + disapearOffset <= 0 && this.vel.y < 0) {
+            this.pos.y = innerHeight + this.radius + disapearOffset;
         }
     }
 
