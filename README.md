@@ -8,4 +8,7 @@
 <h2>OBS</h2>
 <p>You can actually use this animation for your OBS background or overlays, although take in mind that this is not an image or a video, it can consume a lot of processing power depending on the quantity of particles you put. To add it to OBS is simple, just drag the "index.html" file to your sources section or add a browser source that points to that file, if you change anything you will have to press the refresh button on the source.</p>
 <br/>
-<h2 align="center"><a href="https://jayexdesigns.github.io/particles-background/">PREVIEW</a></h2>
+<h2>Wallpaper Engine</h2>
+<p>Also one of the purposes for this animations is the posibility of having it as a wallpaper, that's why I added it to Wallpaper Engine where you can costomize it however you want easily, the link is down below</p>
+<br/>
+<h2 align="center"><a href="https://jayexdesigns.github.io/particles-background/">TRY IT!</a>&nbsp;&nbsp;&nbsp;<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2479991313">WALLPAPER</a></h2>
