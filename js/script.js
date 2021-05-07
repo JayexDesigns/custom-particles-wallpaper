@@ -29,7 +29,6 @@ window.addEventListener('resize', () => {
 
 class Particle {
     static particles = [];
-    static quantity = particleQuantity;
 
     constructor() {
         this.radius = particleRadius;
@@ -96,24 +95,30 @@ class Particle {
 
 
 
+var reqAnim;
 const start = () => {
     Particle.particles = [];
-    for (let i = 0; i < Particle.quantity; ++i) {
+    for (let i = 0; i < particleQuantity; ++i) {
         new Particle();
-    }
-    if (showFPS) {
-        stats = createStats();
-        document.body.appendChild(stats.domElement);
     }
     const animate = () => {
         ctx.clearRect(0, 0, innerWidth, innerHeight);
         for (let i = 0; i < Particle.particles.length; ++i) {
             Particle.particles[i].print();
         }
-        if (showFPS) {
+        if (showFPS && stats) {
             stats.update();
         }
-        requestAnimationFrame(animate);
+        else if (showFPS) {
+            stats = createStats();
+            stats.domElement.classList.add("fpsStats")
+            document.body.appendChild(stats.domElement);
+        }
+        else if (document.getElementsByClassName("fpsStats").length !== 0) {
+            stats = undefined;
+            document.getElementsByClassName("fpsStats")[0].remove();
+        }
+        reqAnim = requestAnimationFrame(animate);
     }
     animate();
 }
