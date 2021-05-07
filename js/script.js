@@ -89,7 +89,7 @@ class Particle {
                     ctx.moveTo(this.pos.x, this.pos.y);
                     ctx.lineTo(Particle.particles[i].pos.x, Particle.particles[i].pos.y);
                     ctx.lineWidth = lineWidth;
-                    ctx.strokeStyle = `rgba(${parseInt(linesColor.slice(1, 3), 16)}, ${parseInt(linesColor.slice(3, 5), 16)}, ${parseInt(linesColor.slice(5, 7), 16)}, ${(this.pos.dist(Particle.particles[i].pos) <= 50) ? 1 : -0.01*this.pos.dist(Particle.particles[i].pos)+1.5})`;
+                    ctx.strokeStyle = `rgba(${parseInt(lineColor.slice(1, 3), 16)}, ${parseInt(lineColor.slice(3, 5), 16)}, ${parseInt(lineColor.slice(5, 7), 16)}, ${(this.pos.dist(Particle.particles[i].pos) <= 50) ? 1 : -0.01*this.pos.dist(Particle.particles[i].pos)+1.5})`;
                     ctx.stroke();
                 }
             }

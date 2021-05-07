@@ -1,7 +1,7 @@
 var showFPS = false;
 
 var particleColor = "#ffffff";
-var linesColor = "#ffffff";
+var lineColor = "#ffffff";
 
 var transparentBackground = false;
 var backgroundColor1 = "#7b00ff";
