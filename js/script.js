@@ -84,12 +84,13 @@ class Particle {
     connections() {
         for (let i = 0; i < Particle.particles.length; ++i) {
             if (Particle.particles[i] !== this) {
-                if (-0.01*this.pos.dist(Particle.particles[i].pos)+1.5 > 0) {
+                let distance = this.pos.squaredDist(Particle.particles[i].pos);
+                if (distance < maxDistOpacity**2) {
                     ctx.beginPath();
                     ctx.moveTo(this.pos.x, this.pos.y);
                     ctx.lineTo(Particle.particles[i].pos.x, Particle.particles[i].pos.y);
                     ctx.lineWidth = lineWidth;
-                    ctx.strokeStyle = `rgba(${parseInt(lineColor.slice(1, 3), 16)}, ${parseInt(lineColor.slice(3, 5), 16)}, ${parseInt(lineColor.slice(5, 7), 16)}, ${(this.pos.dist(Particle.particles[i].pos) <= 50) ? 1 : -0.01*this.pos.dist(Particle.particles[i].pos)+1.5})`;
+                    ctx.strokeStyle = `rgba(${parseInt(lineColor.slice(1, 3), 16)}, ${parseInt(lineColor.slice(3, 5), 16)}, ${parseInt(lineColor.slice(5, 7), 16)}, ${(distance <= minDistOpacity**2) ? 1 : slope*Math.sqrt(distance)+height})`;
                     ctx.stroke();
                 }
             }
@@ -100,7 +101,12 @@ class Particle {
 
 
 var reqAnim;
+var slope;
+var height;
 const start = () => {
+    slope = 1/(minDistOpacity - maxDistOpacity);
+    height = -slope * minDistOpacity + 1;
+
     Particle.particles = [];
     for (let i = 0; i < particleQuantity; ++i) {
         new Particle();

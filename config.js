@@ -15,4 +15,7 @@ var lineWidth = 2;
 var minVelocity = 0.5;
 var maxVelocity = 2;
 
-var disapearOffset = 150;
+// Advanced Settings, Change Them At Your Own Risk
+var disapearOffset = 150; // Distance At Which The Particles Disapear (Leave It Equal To The maxDistOpacity For Smooth Transition)
+var minDistOpacity = 50; // Distance Between Particles At Which The Line Starts To Fade
+var maxDistOpacity = 150; // Distance Between Particles At Which The Line Is No Longer Visible

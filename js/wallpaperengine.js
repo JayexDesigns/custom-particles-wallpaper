@@ -180,5 +180,26 @@ window.wallpaperPropertyListener = {
                 start();
             }
         }
+        if (properties.disapearOffset) {
+            if (nonePreset) {
+                disapearOffset = properties.disapearOffset.value;
+                window.cancelAnimationFrame(reqAnim);
+                start();
+            }
+        }
+        if (properties.minDistOpacity) {
+            if (nonePreset) {
+                minDistOpacity = properties.minDistOpacity.value;
+                window.cancelAnimationFrame(reqAnim);
+                start();
+            }
+        }
+        if (properties.maxDistOpacity) {
+            if (nonePreset) {
+                maxDistOpacity = properties.maxDistOpacity.value;
+                window.cancelAnimationFrame(reqAnim);
+                start();
+            }
+        }
     }
 }

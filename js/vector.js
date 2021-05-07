@@ -48,7 +48,13 @@ class Vector2D {
     //Calculates The Distance Of Two Points
     dist(vector) {
         let vec = this.sub(vector);
-        return vec.abs(vec);
+        return vec.abs();
+    }
+
+    //Calculates The Distance Of Two Points Squared (More Efficient) Thanks Two Quid ^^
+    squaredDist(vector) {
+        let vec = this.sub(vector);
+        return vec.x**2 + vec.y**2;
     }
 
     //Returns A Vector That Has The Same Direction As The Instance But Has Module 1
