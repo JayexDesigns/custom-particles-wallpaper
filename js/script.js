@@ -64,16 +64,20 @@ class Particle {
     }
 
     print() {
-        this.connections();
-        ctx.beginPath();
-        ctx.arc(
-            this.pos.x,
-            this.pos.y,
-            this.radius,
-            0, Math.PI * 2, true
-        );
-        ctx.fillStyle = particleColor;
-        ctx.fill();
+        if (lineWidth > 0) {
+            this.connections();
+        }
+        if (particleRadius > 0) {
+            ctx.beginPath();
+            ctx.arc(
+                this.pos.x,
+                this.pos.y,
+                this.radius,
+                0, Math.PI * 2, true
+            );
+            ctx.fillStyle = particleColor;
+            ctx.fill();
+        }
         this.move();
     }
 
