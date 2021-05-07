@@ -16,6 +16,8 @@ const weColorToHex = (r, g, b) => {
     return hex;
 }
 
+var nonePreset = false;
+
 window.wallpaperPropertyListener = {
     applyUserProperties: function(properties) {
         if (properties.showFPS) {
@@ -24,8 +26,10 @@ window.wallpaperPropertyListener = {
         if (properties.selectPreset) {
             switch (properties.selectPreset.value) {
                 case 1:
+                    nonePreset = true;
                     break;
                 case 2:
+                    nonePreset = false;
                     backgroundColor1 = "#7b00ff";
                     backgroundColor2 = "#1a237e";
                     particleColor = "#ffffff";
@@ -40,6 +44,7 @@ window.wallpaperPropertyListener = {
                     start();
                     break;
                 case 3:
+                    nonePreset = false;
                     backgroundColor1 = "#ffffff";
                     backgroundColor2 = "#ffffff";
                     particleColor = "#1a1a1a";
@@ -54,6 +59,7 @@ window.wallpaperPropertyListener = {
                     start();
                     break;
                 case 4:
+                    nonePreset = false;
                     backgroundColor1 = "#0f2437";
                     backgroundColor2 = "#0f2437";
                     particleColor = "#50b86b";
@@ -68,6 +74,7 @@ window.wallpaperPropertyListener = {
                     start();
                     break;
                 case 5:
+                    nonePreset = false;
                     backgroundColor1 = "#161a1d";
                     backgroundColor2 = "#0b090a";
                     particleColor = "#e5383b";
@@ -82,6 +89,7 @@ window.wallpaperPropertyListener = {
                     start();
                     break;
                 case 6:
+                    nonePreset = false;
                     backgroundColor1 = "#003566";
                     backgroundColor2 = "#001d3d";
                     particleColor = "#ffd60a";
@@ -98,61 +106,79 @@ window.wallpaperPropertyListener = {
             }
         }
         if (properties.backgroundColor1) {
-            let color = properties.backgroundColor1.value.split(" ");
-            backgroundColor1 = weColorToHex(color[0], color[1], color[2]);
-            changeCanvasColor();
+            if (nonePreset) {
+                let color = properties.backgroundColor1.value.split(" ");
+                backgroundColor1 = weColorToHex(color[0], color[1], color[2]);
+                changeCanvasColor();
+            }
         }
         if (properties.backgroundColor2) {
-            let color = properties.backgroundColor2.value.split(" ");
-            backgroundColor2 = weColorToHex(color[0], color[1], color[2]);
-            changeCanvasColor();
+            if (nonePreset) {
+                let color = properties.backgroundColor2.value.split(" ");
+                backgroundColor2 = weColorToHex(color[0], color[1], color[2]);
+                changeCanvasColor();
+            }
         }
         if (properties.particleColor) {
-            let color = properties.particleColor.value.split(" ");
-            particleColor = weColorToHex(color[0], color[1], color[2]);
-            window.cancelAnimationFrame(reqAnim);
-            start();
+            if (nonePreset) {
+                let color = properties.particleColor.value.split(" ");
+                particleColor = weColorToHex(color[0], color[1], color[2]);
+                window.cancelAnimationFrame(reqAnim);
+                start();
+            }
         }
         if (properties.lineColor) {
-            let color = properties.lineColor.value.split(" ");
-            lineColor = weColorToHex(color[0], color[1], color[2]);
-            window.cancelAnimationFrame(reqAnim);
-            start();
+            if (nonePreset) {
+                let color = properties.lineColor.value.split(" ");
+                lineColor = weColorToHex(color[0], color[1], color[2]);
+                window.cancelAnimationFrame(reqAnim);
+                start();
+            }
         }
         if (properties.particleQuantity) {
-            particleQuantity = properties.particleQuantity.value;
-            window.cancelAnimationFrame(reqAnim);
-            start();
+            if (nonePreset) {
+                particleQuantity = properties.particleQuantity.value;
+                window.cancelAnimationFrame(reqAnim);
+                start();
+            }
         }
         if (properties.particleRadius) {
-            particleRadius = properties.particleRadius.value;
-            window.cancelAnimationFrame(reqAnim);
-            start();
+            if (nonePreset) {
+                particleRadius = properties.particleRadius.value;
+                window.cancelAnimationFrame(reqAnim);
+                start();
+            }
         }
         if (properties.lineWidth) {
-            lineWidth = properties.lineWidth.value;
-            window.cancelAnimationFrame(reqAnim);
-            start();
+            if (nonePreset) {
+                lineWidth = properties.lineWidth.value;
+                window.cancelAnimationFrame(reqAnim);
+                start();
+            }
         }
         if (properties.particleMinVel) {
-            minVelocity = properties.particleMinVel.value * 0.1;
-            if (maxVelocity < minVelocity) {
-                let x = minVelocity;
-                minVelocity = maxVelocity;
-                maxVelocity = x;
+            if (nonePreset) {
+                minVelocity = properties.particleMinVel.value * 0.1;
+                if (maxVelocity < minVelocity) {
+                    let x = minVelocity;
+                    minVelocity = maxVelocity;
+                    maxVelocity = x;
+                }
+                window.cancelAnimationFrame(reqAnim);
+                start();
             }
-            window.cancelAnimationFrame(reqAnim);
-            start();
         }
         if (properties.particleMaxVel) {
-            maxVelocity = properties.particleMaxVel.value * 0.1;
-            if (maxVelocity < minVelocity) {
-                let x = minVelocity;
-                minVelocity = maxVelocity;
-                maxVelocity = x;
+            if (nonePreset) {
+                maxVelocity = properties.particleMaxVel.value * 0.1;
+                if (maxVelocity < minVelocity) {
+                    let x = minVelocity;
+                    minVelocity = maxVelocity;
+                    maxVelocity = x;
+                }
+                window.cancelAnimationFrame(reqAnim);
+                start();
             }
-            window.cancelAnimationFrame(reqAnim);
-            start();
         }
     }
 }
