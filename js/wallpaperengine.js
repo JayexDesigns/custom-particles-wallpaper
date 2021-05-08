@@ -27,6 +27,9 @@ window.wallpaperPropertyListener = {
             switch (properties.selectPreset.value) {
                 case 1:
                     nonePreset = true;
+                    changeCanvasColor();
+                    window.cancelAnimationFrame(reqAnim);
+                    start();
                     break;
                 case 2:
                     nonePreset = false;
@@ -39,6 +42,9 @@ window.wallpaperPropertyListener = {
                     lineWidth = 2;
                     minVelocity = 0.5;
                     maxVelocity = 2;
+                    disapearOffset = 150;
+                    minDistOpacity = 50;
+                    maxDistOpacity = 150;
                     changeCanvasColor();
                     window.cancelAnimationFrame(reqAnim);
                     start();
@@ -54,6 +60,9 @@ window.wallpaperPropertyListener = {
                     lineWidth = 3;
                     minVelocity = 1;
                     maxVelocity = 2;
+                    disapearOffset = 150;
+                    minDistOpacity = 50;
+                    maxDistOpacity = 150;
                     changeCanvasColor();
                     window.cancelAnimationFrame(reqAnim);
                     start();
@@ -69,6 +78,9 @@ window.wallpaperPropertyListener = {
                     lineWidth = 5;
                     minVelocity = 0.5;
                     maxVelocity = 1;
+                    disapearOffset = 150;
+                    minDistOpacity = 50;
+                    maxDistOpacity = 150;
                     changeCanvasColor();
                     window.cancelAnimationFrame(reqAnim);
                     start();
@@ -84,6 +96,9 @@ window.wallpaperPropertyListener = {
                     lineWidth = 2;
                     minVelocity = 0.1;
                     maxVelocity = 0.5;
+                    disapearOffset = 150;
+                    minDistOpacity = 50;
+                    maxDistOpacity = 150;
                     changeCanvasColor();
                     window.cancelAnimationFrame(reqAnim);
                     start();
@@ -99,6 +114,9 @@ window.wallpaperPropertyListener = {
                     lineWidth = 2;
                     minVelocity = 4;
                     maxVelocity = 5;
+                    disapearOffset = 150;
+                    minDistOpacity = 50;
+                    maxDistOpacity = 150;
                     changeCanvasColor();
                     window.cancelAnimationFrame(reqAnim);
                     start();
