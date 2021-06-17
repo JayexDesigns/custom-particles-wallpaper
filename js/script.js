@@ -111,7 +111,22 @@ const start = () => {
     for (let i = 0; i < particleQuantity; ++i) {
         new Particle();
     }
+    var last = performance.now() / 1000;
+    var fpsThreshold = 0;
     const animate = () => {
+        reqAnim = requestAnimationFrame(animate);
+
+        var now = performance.now() / 1000;
+        var dt = Math.min(now - last, 1);
+        last = now;
+        if (fpsLimit > 0) {
+            fpsThreshold += dt;
+            if (fpsThreshold < 1.0 / fpsLimit) {
+                return;
+            }
+            fpsThreshold -= 1.0 / fpsLimit;
+        }
+
         ctx.clearRect(0, 0, innerWidth, innerHeight);
         for (let i = 0; i < Particle.particles.length; ++i) {
             Particle.particles[i].print();
@@ -128,7 +143,6 @@ const start = () => {
             stats = undefined;
             document.getElementsByClassName("fpsStats")[0].remove();
         }
-        reqAnim = requestAnimationFrame(animate);
     }
     animate();
 }

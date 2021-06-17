@@ -1,4 +1,5 @@
-var showFPS = false;
+var showFPS = true;
+var fpsLimit = 60;
 
 var transparentBackground = false;
 var backgroundColor1 = "#7b00ff";

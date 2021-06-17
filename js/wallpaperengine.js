@@ -23,6 +23,9 @@ window.wallpaperPropertyListener = {
         if (properties.showFPS) {
             showFPS = properties.showFPS.value;
         }
+        if (properties.FPSLimit) {
+            fpsLimit = properties.FPSLimit.value;
+        }
         if (properties.selectPreset) {
             switch (properties.selectPreset.value) {
                 case 1:
