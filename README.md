@@ -1,4 +1,4 @@
-<h3 align="center"><img src='https://raw.githubusercontent.com/JayexDesigns/particles-background/main/assets/preview.gif' width='15%'></h3>
+<h3 align="center"><img src='./assets/preview.gif' width='15%'></h3>
 <h1 align="center">Particles Background</h1>
 <p align="center">This animation features randomly moving particles connecting to other particles</p>
 <br/>
