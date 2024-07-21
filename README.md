@@ -11,4 +11,4 @@
 <h2>Wallpaper Engine</h2>
 <p>Also one of the purposes for this animation is the possibility of having it as a wallpaper, that's why I added it to Wallpaper Engine where you can customize it however you want easily. Also, the wallpaper got approved by the developers, the link is down below.</p>
 <br/>
-<h2 align="center"><a href="https://jayexdesigns.github.io/particles-background/">TRY IT!</a>&nbsp;&nbsp;&nbsp;<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2479991313">WALLPAPER</a></h2>
+<h2 align="center"><a href="https://jayexdesigns.github.io/custom-particles-wallpaper/">TRY IT!</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://steamcommunity.com/sharedfiles/filedetails/?id=2479991313">WALLPAPER</a></h2>
