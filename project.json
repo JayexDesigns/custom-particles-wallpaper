@@ -1,187 +1,193 @@
 {
-    "contentrating" : "Everyone",
-	"description" : "This is a abstract particles background fully customizable, you can change the background color, the particles and lines color, the particle quantity...\n\nThere are also some presets that you can use.\n\nThe source code and project are stored on my github page: https://github.com/JayexDesigns/particles-background",
-	"file" : "index.html",
-	"general" : 
-	{
-		"properties" : 
-		{
-            "showFPS": {
-                "text": "Show FPS",
-                "type": "bool",
-                "order": 0,
-                "value": false
-            },
-            "FPSLimit": {
-                "max": 144,
-                "min": 5,
-                "text": "FPS Limit",
-                "type": "slider",
-                "value": 60,
-                "order": 10,
-                "editable": true
-            },
+	"approved": true,
+	"contentrating": "Everyone",
+	"description": "This is a abstract particles background fully customizable, you can change the background color, the particles and lines color, the particle quantity...\n\nThere are also some presets that you can use.\n\nThe source code and project are stored on my github page: https://github.com/JayexDesigns/particles-background",
+	"file": "index.html",
+	"general": {
+		"properties": {
+			"showFPS": {
+				"text": "Show FPS",
+				"type": "bool",
+				"order": 0,
+				"value": false
+			},
+			"FPSLimit": {
+				"max": 144,
+				"min": 5,
+				"text": "FPS Limit",
+				"type": "slider",
+				"value": 60,
+				"order": 10,
+				"editable": true
+			},
 			"selectPreset": {
-                "options": [{
-                        "label": "None",
-                        "value": 1
-                    },
-                    {
-                        "label": "Lean",
-                        "value": 2
-                    },
-                    {
-                        "label": "Eye Burner",
-                        "value": 3
-                    },
-                    {
-                        "label": "Grass",
-                        "value": 4
-                    },
-                    {
-                        "label": "Bones",
-                        "value": 5
-                    },
-                    {
-                        "label": "Electric",
-                        "value": 6
-                    }
-                ],
-                "text": "Presets",
-                "type": "combo",
-                "order": 20,
-                "value": 1
-            },
-            "backgroundColor1": {
-                "condition": "selectPreset.value == 1",
-                "text": "First Background Color",
-                "type": "color",
-                "order": 30,
-                "value": "0.4823 0 1"
-            },
-            "backgroundColor2": {
-                "condition": "selectPreset.value == 1",
-                "text": "Second Background Color",
-                "type": "color",
-                "order": 40,
-                "value": "0.1019 0.1372 0.4941"
-            },
-            "particleColor": {
-                "condition": "selectPreset.value == 1",
-                "text": "Particle Color",
-                "type": "color",
-                "order": 50,
-                "value": "1 1 1"
-            },
-            "lineColor": {
-                "condition": "selectPreset.value == 1",
-                "text": "Line Color",
-                "type": "color",
-                "order": 60,
-                "value": "1 1 1"
-            },
-            "particleQuantity": {
-                "condition": "selectPreset.value == 1",
-                "max": 300,
-                "min": 20,
-                "text": "Particle Quantity",
-                "type": "slider",
-                "value": 100,
-                "order": 70,
-                "editable": true
-            },
-            "particleRadius": {
-                "condition": "selectPreset.value == 1",
-                "max": 20,
-                "min": 0,
-                "text": "Particle Radius",
-                "type": "slider",
-                "value": 3,
-                "order": 80,
-                "editable": true
-            },
-            "lineWidth": {
-                "condition": "selectPreset.value == 1",
-                "max": 20,
-                "min": 0,
-                "text": "Line Width",
-                "type": "slider",
-                "value": 2,
-                "order": 90,
-                "editable": true
-            },
-            "particleMinVel": {
-                "condition": "selectPreset.value == 1",
-                "max": 100,
-                "min": 0,
-                "text": "Particle Minimum Velocity",
-                "type": "slider",
-                "value": 5,
-                "order": 100,
-                "editable": true
-            },
-            "particleMaxVel": {
-                "condition": "selectPreset.value == 1",
-                "max": 100,
-                "min": 0,
-                "text": "Particle Maximum Velocity",
-                "type": "slider",
-                "value": 20,
-                "order": 110,
-                "editable": true
-            },
-            "advancedSettings": {
-                "condition": "selectPreset.value == 1",
-                "text": "Advanced Settings",
-                "type": "bool",
-                "order": 120,
-                "value": false
-            },
-            "disapearOffset": {
-                "condition": "selectPreset.value == 1 && advancedSettings.value == true",
-                "max": 1000,
-                "min": 0,
-                "text": "Distance Where Particles Disapear",
-                "type": "slider",
-                "value": 150,
-                "order": 130,
-                "editable": true
-            },
-            "minDistOpacity": {
-                "condition": "selectPreset.value == 1 && advancedSettings.value == true",
-                "max": 1000,
-                "min": 0,
-                "text": "Minimum Distance For Line",
-                "type": "slider",
-                "value": 50,
-                "order": 140,
-                "editable": true
-            },
-            "maxDistOpacity": {
-                "condition": "selectPreset.value == 1 && advancedSettings.value == true",
-                "max": 1000,
-                "min": 0,
-                "text": "Maximum Distance For Line",
-                "type": "slider",
-                "value": 150,
-                "order": 150,
-                "editable": true
-            },
-            "schemecolor": {
-                "condition": "selectPreset.value == 420",
-                "text": "Scheme Color",
-                "type": "color",
-                "order": 1000,
-                "value": "0 0 0"
-            }
+				"options": [
+					{
+						"label": "None",
+						"value": 1
+					},
+					{
+						"label": "Lean",
+						"value": 2
+					},
+					{
+						"label": "Eye Burner",
+						"value": 3
+					},
+					{
+						"label": "Grass",
+						"value": 4
+					},
+					{
+						"label": "Bones",
+						"value": 5
+					},
+					{
+						"label": "Electric",
+						"value": 6
+					}
+				],
+				"text": "Presets",
+				"type": "combo",
+				"order": 20,
+				"value": 1
+			},
+			"backgroundColor1": {
+				"condition": "selectPreset.value == 1",
+				"text": "First Background Color",
+				"type": "color",
+				"order": 30,
+				"value": "0.4823 0 1"
+			},
+			"backgroundColor2": {
+				"condition": "selectPreset.value == 1",
+				"text": "Second Background Color",
+				"type": "color",
+				"order": 40,
+				"value": "0.1019 0.1372 0.4941"
+			},
+			"particleColor": {
+				"condition": "selectPreset.value == 1",
+				"text": "Particle Color",
+				"type": "color",
+				"order": 50,
+				"value": "1 1 1"
+			},
+			"lineColor": {
+				"condition": "selectPreset.value == 1",
+				"text": "Line Color",
+				"type": "color",
+				"order": 60,
+				"value": "1 1 1"
+			},
+			"particleQuantity": {
+				"condition": "selectPreset.value == 1",
+				"max": 300,
+				"min": 20,
+				"text": "Particle Quantity",
+				"type": "slider",
+				"value": 100,
+				"order": 70,
+				"editable": true
+			},
+			"particleRadius": {
+				"condition": "selectPreset.value == 1",
+				"max": 20,
+				"min": 0,
+				"text": "Particle Radius",
+				"type": "slider",
+				"value": 3,
+				"order": 80,
+				"editable": true
+			},
+			"lineWidth": {
+				"condition": "selectPreset.value == 1",
+				"max": 20,
+				"min": 0,
+				"text": "Line Width",
+				"type": "slider",
+				"value": 2,
+				"order": 90,
+				"editable": true
+			},
+			"particleMinVel": {
+				"condition": "selectPreset.value == 1",
+				"max": 100,
+				"min": 0,
+				"text": "Particle Minimum Velocity",
+				"type": "slider",
+				"value": 5,
+				"order": 100,
+				"editable": true
+			},
+			"particleMaxVel": {
+				"condition": "selectPreset.value == 1",
+				"max": 100,
+				"min": 0,
+				"text": "Particle Maximum Velocity",
+				"type": "slider",
+				"value": 20,
+				"order": 110,
+				"editable": true
+			},
+			"advancedSettings": {
+				"condition": "selectPreset.value == 1",
+				"text": "Advanced Settings",
+				"type": "bool",
+				"order": 120,
+				"value": false
+			},
+			"disapearOffset": {
+				"condition": "selectPreset.value == 1 && advancedSettings.value == true",
+				"max": 1000,
+				"min": 0,
+				"text": "Distance Where Particles Disapear",
+				"type": "slider",
+				"value": 150,
+				"order": 130,
+				"editable": true
+			},
+			"minDistOpacity": {
+				"condition": "selectPreset.value == 1 && advancedSettings.value == true",
+				"max": 1000,
+				"min": 0,
+				"text": "Minimum Distance For Line",
+				"type": "slider",
+				"value": 50,
+				"order": 140,
+				"editable": true
+			},
+			"maxDistOpacity": {
+				"condition": "selectPreset.value == 1 && advancedSettings.value == true",
+				"max": 1000,
+				"min": 0,
+				"text": "Maximum Distance For Line",
+				"type": "slider",
+				"value": 150,
+				"order": 150,
+				"editable": true
+			},
+			"schemecolor": {
+				"condition": "selectPreset.value == 420",
+				"text": "Scheme Color",
+				"type": "color",
+				"order": 1000,
+				"value": "0 0 0"
+			}
 		}
 	},
-	"preview" : "preview.gif",
-	"tags" : [ "Abstract", "CGI", "Relaxing", "Sci-Fi", "Technology" ],
-	"title" : "Custom Particles",
-	"type" : "web",
-	"version" : "1.10",
-	"visibility" : "public",
-	"workshopid" : "2479991313",
-	"workshopurl" : "steam://url/CommunityFilePage/2479991313"
+	"preview": "preview.gif",
+	"tags": [
+		"Abstract",
+		"CGI",
+		"Relaxing",
+		"Sci-Fi",
+		"Technology"
+	],
+	"title": "Custom Particles",
+	"type": "web",
+	"version": "1.11",
+	"visibility": "public",
+	"workshopid": "2479991313",
+	"workshopurl": "steam://url/CommunityFilePage/2479991313"
 }
